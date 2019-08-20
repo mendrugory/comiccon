@@ -1,0 +1,15 @@
+language: go
+go:
+  - "1.10"
+sudo: required
+services:
+  - docker 
+script:
+  - go test ./...
+  - docker build -t comiccon .
+after_success:
+  - docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
+  - docker tag comiccon $DOCKER_USER/comiccon:$TRAVIS_BUILD_NUMBER
+  - docker push $DOCKER_USER/comiccon:$TRAVIS_BUILD_NUMBER
+  - docker tag comiccon $DOCKER_USER/comiccon:latest
+  - docker push $DOCKER_USER/comiccon:latest  
