@@ -1,0 +1,6 @@
+config.json
+comics/
+vendor/
+.travis.yml
+.gitignore
+.git
