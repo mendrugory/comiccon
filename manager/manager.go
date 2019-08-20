@@ -9,6 +9,7 @@ import (
 	"github.com/mendrugory/comiccon/worker"
 )
 
+// Run launches the manager with a maximum of given workers.
 func Run(workers int, d data.Resource) chan bool {
 
 	runtime.GOMAXPROCS(workers)
