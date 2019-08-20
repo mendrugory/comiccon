@@ -7,15 +7,15 @@ import (
 	"path"
 	"strings"
 
-	helper "github.com/mendrugory/comicon/os"
+	helper "github.com/mendrugory/comiccon/os"
 )
 
 type Resource struct {
 	Url        string   `json:"url"`
-	Suffixes   []string `json:"suffixes"`
+	Extensions []string `json:"extensions"`
 	BaseFolder string   `json:"basefolder"`
-	Data       []byte	`json:"-"`
-	filePath   string `json:"filepath"`
+	Data       []byte   `json:"-"`
+	filePath   string   `json:"filepath"`
 }
 
 // MinimumResourceSize is the limit to not downloaded the resource again.

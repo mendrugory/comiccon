@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/mendrugory/comicon/cmd"
+	"github.com/mendrugory/comiccon/cmd"
 )
 
 func main() {

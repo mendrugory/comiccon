@@ -8,19 +8,19 @@ import (
 	"runtime"
 	"strings"
 
-	"github.com/mendrugory/comicon/data"
-	"github.com/mendrugory/comicon/manager"
-	helper "github.com/mendrugory/comicon/os"
+	"github.com/mendrugory/comiccon/data"
+	"github.com/mendrugory/comiccon/manager"
+	helper "github.com/mendrugory/comiccon/os"
 	"github.com/spf13/cobra"
 )
 
 const baseFolderFlag string = "basefolder"
-const suffixesFlag string = "suffixes"
+const extensionsFlag string = "extensions"
 const linkFlag string = "link"
 
 const baseUrl string = "https://the-eye.eu/public/Comics"
 const defaultBaseFolder string = "./comics"
-const defaultSuffixes string = "cbr,jpg,pdf"
+const defaultExtensions string = "cbr,jpg,pdf"
 const defaultLink string = ""
 
 // downloadCmd represents the download command
@@ -37,10 +37,10 @@ var downloadCmd = &cobra.Command{
 		url := getURL(cmd, linkFlag)
 		fmt.Println("Url:", url)
 
-		suffixes := getSuffixes(cmd, suffixesFlag)
-		fmt.Println("Suffixes:", suffixes)
+		extensions := getExtensions(cmd, extensionsFlag)
+		fmt.Println("Extensions:", extensions)
 
-		if result := run(url, baseFolder, suffixes); !result {
+		if result := run(url, baseFolder, extensions); !result {
 			fmt.Println("Errors during downloading 😱")
 			os.Exit(1)
 		}
@@ -78,30 +78,30 @@ func getURL(cmd *cobra.Command, flagName string) string {
 	return result
 }
 
-func getSuffixes(cmd *cobra.Command, flagName string) []string {
+func getExtensions(cmd *cobra.Command, flagName string) []string {
 
-	stringSuffixes := getFlagValue(cmd, flagName, defaultSuffixes)
-	var suffixes []string
+	stringExtensions := getFlagValue(cmd, flagName, defaultExtensions)
+	var extensions []string
 
-	for _, s := range strings.Split(stringSuffixes, ",") {
-		suffixes = append(suffixes, s)
+	for _, s := range strings.Split(stringExtensions, ",") {
+		extensions = append(extensions, s)
 	}
 
-	return suffixes
+	return extensions
 }
 
 func init() {
 	rootCmd.AddCommand(downloadCmd)
 
 	downloadCmd.Flags().String(baseFolderFlag, defaultBaseFolder, "Base Folder where the comics will be stored")
-	downloadCmd.Flags().String(suffixesFlag, defaultSuffixes, "Suffixes of the files which will be downloaded")
+	downloadCmd.Flags().String(extensionsFlag, defaultExtensions, "Extensions of the files which will be downloaded")
 	downloadCmd.Flags().String(linkFlag, defaultLink, "Sublink of the url if you only want to download some collections")
 }
 
-func run(url string, baseFolder string, suffixes []string) bool {
+func run(url string, baseFolder string, extensions []string) bool {
 	d := data.Resource{
 		Url:        url,
-		Suffixes:   suffixes,
+		Extensions:   extensions,
 		BaseFolder: baseFolder,
 	}
 

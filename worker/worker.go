@@ -7,9 +7,9 @@ import (
 	"strings"
 
 	"github.com/anaskhan96/soup"
-	"github.com/mendrugory/comicon/data"
-	"github.com/mendrugory/comicon/download"
-	"github.com/mendrugory/comicon/os"
+	"github.com/mendrugory/comiccon/data"
+	"github.com/mendrugory/comiccon/download"
+	"github.com/mendrugory/comiccon/os"
 )
 
 var notValidLinks = []string{".", "..", "..."}
@@ -35,7 +35,7 @@ func Download(d data.Resource, releaseC chan bool, jobsC chan data.Resource) {
 			return
 		}
 
-		if isResource(d.Url, d.Suffixes) {
+		if isResource(d.Url, d.Extensions) {
 			saveFile(d)
 		} else {
 			goDeeper(d, jobsC)
@@ -70,7 +70,7 @@ func goDeeper(d data.Resource, jobsC chan data.Resource) {
 	for _, link := range getLinks(d) {
 		newData := data.Resource{
 			Url:        newURL(d.Url, link),
-			Suffixes:   d.Suffixes,
+			Extensions:   d.Extensions,
 			BaseFolder: folderPath,
 		}
 		jobsC <- newData
@@ -116,9 +116,9 @@ func getLinks(d data.Resource) []string {
 	return result
 }
 
-func isResource(url string, suffixes []string) bool {
+func isResource(url string, extensions []string) bool {
 	result := false
-	for _, suffix := range suffixes {
+	for _, suffix := range extensions {
 		result = result || strings.HasSuffix(url, suffix)
 	}
 	return result

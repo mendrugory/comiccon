@@ -5,8 +5,8 @@ import (
 	"runtime"
 	"time"
 
-	"github.com/mendrugory/comicon/data"
-	"github.com/mendrugory/comicon/worker"
+	"github.com/mendrugory/comiccon/data"
+	"github.com/mendrugory/comiccon/worker"
 )
 
 func Run(workers int, d data.Resource) chan bool {
