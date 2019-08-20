@@ -13,6 +13,6 @@ FROM alpine
 WORKDIR /app
 COPY --from=builder /go/src/comiccon/comiccon .
 
-ENTRYPOINT [ "comiccon" ]
+ENTRYPOINT [ "./comiccon" ]
 
 

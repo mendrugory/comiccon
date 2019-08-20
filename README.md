@@ -27,7 +27,7 @@ If a comic is already downloaded, it will not be downloaded it again.
 
 ### Optional flags
 
-* Base Folder: Directory where the comics will be downloaded (default: current directory)
+* Base Folder: Directory where the comics will be downloaded. It is created if it does not exist (default: current directory)
 * Extensions: Extensions of the files which will be downloaded (default: cbr, jpg and pdf)
 * Link: Sub link of the route if you only want to download a part of the collection (check the [list of collections](https://the-eye.eu/public/Comics/))
 
