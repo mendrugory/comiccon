@@ -1,10 +1,10 @@
 # Comiccon
 
-Comiccon is CLI toy project to download and keep updated comics from [here](https://the-eye.eu/public/Comics/).
+Comiccon is a toy project to download and keep updated comics from [here](https://the-eye.eu/public/Comics/).
 
 #### Build
 
-[![Build Status](https://travis-ci.org/mendrugory/comiccon.svg?branch=master)](https://travis-ci.org/mendrugory/comiccon)
+[![Build Status](https://travis-ci.org/mendrugory/comiccon.svg?branch=master)](https://travis-ci.org/mendrugory/comicon)
 
 #### Docker Image
 [![](https://images.microbadger.com/badges/version/mendrugory/comiccon.svg)](https://microbadger.com/images/mendrugory/comiccon) [![](https://images.microbadger.com/badges/image/mendrugory/comiccon.svg)](https://microbadger.com/images/mendrugory/comiccon)
@@ -35,7 +35,7 @@ The configuration of the command is saved in a file called `config.json`.
 ### Optional flags
 
 * Base Folder: Directory where the comics will be downloaded. It is created if it does not exist (default: current directory)
-* Extensions: Extensions of the files which will be downloaded (default: cbr, jpg and pdf)
+* Extensions: Extensions of the files which will be downloaded, separated by comma (default: cbr, jpg and pdf)
 * Link: Sub link of the route if you only want to download a part of the collection (check the [list of collections](https://the-eye.eu/public/Comics/))
 
 ```bash
